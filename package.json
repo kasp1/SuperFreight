@@ -1,6 +1,6 @@
 {
   "name": "superfreight",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "description": "File transfer over HTTP. Transfer files between computers. Mac, Windows, Linux, Android, etc.",
   "author": "Miroslav Kaspar <k@e0.cz>",
   "private": true,
@@ -11,10 +11,17 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "axios": "^0.16.1",
+    "babel-polyfill": "^6.23.0",
+    "bulma": "^0.4.1",
+    "cors": "^2.8.3",
+    "filesize": "^3.5.9",
+    "font-awesome": "^4.7.0",
     "formidable": "^1.1.1",
     "ip": "^1.1.5",
     "vue": "^2.2.6",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

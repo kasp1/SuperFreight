@@ -7,6 +7,7 @@ const ip = require('ip')
 const mime = require('mime')
 const fs = require('fs')
 const formidable = require('formidable')
+const cors = require('cors')
 
 let cli = {
   run: {
@@ -23,6 +24,7 @@ let cli = {
       }
 
       let app = express()
+      app.use(cors())
       app.use('/', express.static(path.join(__dirname, 'dist')))
 
       // file donwload
@@ -47,8 +49,6 @@ let cli = {
         let list = {}
 
         for (let file in files) {
-
-          console.log(files[file])
           if (fs.lstatSync(files[file]).isFile()) {
             list[files[file]] = {
               size: fs.statSync(files[file]).size,
@@ -57,7 +57,8 @@ let cli = {
           }
         }
 
-        res.status(400)
+        res.setHeader('Content-Type', 'application/json')
+        res.status(200)
         res.send(list)
       })
 
