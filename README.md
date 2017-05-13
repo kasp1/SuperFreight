@@ -6,10 +6,7 @@
 
 ### If you are familiar with CLI
 
-1. Install:
-```
-npm i -g superfreight
-```
+1. Install: `npm i -g superfreight`
 2. Change to the directory you want to share (`cd`)
 3. Run the `superfreight` command and follow the instructions.
 4. Star this repo.
