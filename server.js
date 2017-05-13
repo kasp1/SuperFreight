@@ -6,6 +6,7 @@ const path = require('path')
 const ip = require('ip')
 const mime = require('mime')
 const fs = require('fs')
+const formidable = require('formidable')
 
 let cli = {
   run: {
@@ -24,6 +25,7 @@ let cli = {
       let app = express()
       app.use('/', express.static(path.join(__dirname, 'dist')))
 
+      // file donwload
       app.get('/files/:name', (req, res, next) => {
         if (fs.existsSync(req.params.name)) {
           console.log('File download requested: ', req.params.name)
@@ -38,6 +40,7 @@ let cli = {
         }
       })
 
+      // file listing
       app.get('/files', (req, res, next) => {
         let files = fs.readdirSync(process.cwd())
 
@@ -56,6 +59,49 @@ let cli = {
 
         res.status(400)
         res.send(list)
+      })
+
+      // file upload
+      app.post('/files', (req, res, next) => {
+        let uploadedFiles = []
+
+        // create an incoming form object
+        let form = new formidable.IncomingForm()
+
+        // specify that we want to allow the user to upload multiple files in a single request
+        form.multiples = true
+
+        // store all uploads in the /uploads directory
+        form.uploadDir = process.cwd() + path.sep
+
+        // every time a file has been uploaded successfully,
+        // insert it to the DB and rename the physical file
+        // to its ID
+        form.on('file', (field, file) => {
+          uploadedFiles.push(file)
+        })
+
+        // log any errors that occur
+        form.on('error', (err) => {
+          console.log('Failed to upload file.', err)
+          if (!res.headersSent) {
+            res.status(500).send('The file upload failed. (whole)')
+          }
+        })
+
+        // canceled by the client
+        form.on('aborted', () => {
+          res.status(400).send('The file upload has been aborted by the client (timeout or close event on the socket).')
+        })
+
+        // once all the files have been uploaded, send a response to the client
+        form.on('end', () => {
+          res.status(200)
+          res.send(JSON.stringify(uploadedFiles))
+        })
+
+        // parse the incoming request containing the form data
+        form.parse(req)
       })
 
       let server = http.createServer(app)
