@@ -1,6 +1,6 @@
 {
   "name": "superfreight",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "File transfer over HTTP. Transfer files between computers. Mac, Windows, Linux, Android, etc.",
   "author": "Miroslav Kaspar <k@e0.cz>",
   "scripts": {
@@ -14,6 +14,7 @@
     "babel-polyfill": "^6.23.0",
     "bulma": "^0.4.1",
     "cors": "^2.8.3",
+    "express": "^4.15.2",
     "filesize": "^3.5.9",
     "font-awesome": "^4.7.0",
     "formidable": "^1.1.1",
