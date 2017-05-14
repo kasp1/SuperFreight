@@ -97,6 +97,10 @@ let cli = {
 
         // once all the files have been uploaded, send a response to the client
         form.on('end', () => {
+          for (let file in uploadedFiles) {
+            fs.renameSync(uploadedFiles[file].path, path.join(form.uploadDir, uploadedFiles[file].name))
+          }
+          
           res.status(200)
           res.send(JSON.stringify(uploadedFiles))
         })

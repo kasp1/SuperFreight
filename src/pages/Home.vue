@@ -1,5 +1,7 @@
 <template>
   <div>
+    <UploadModal ref="upload"></UploadModal>
+
     <nav class="nav has-shadow">
       <div class="nav-left">
         <div class="nav-item">
@@ -38,12 +40,12 @@
     </nav>
 
     <div v-if="list === 'icons'" id="list-icons">
-      <a v-for="(file, name) in files" class="file" :href="fileLink(name)" target="_blank">
+      <a v-for="(file, name) in files" class="file" :href="fileLink(name)" target="_blank" :title="name">
         <span v-if="hasPreview(file.mime)" class="ic preview" :style="previewImage(name)"></span>
         <span v-else class="ic">
           <i :class="fileIcon(file.mime)"></i>
         </span>
-        <span class="name" :title="name">{{name}}</span>
+        <span class="name">{{name}}</span>
         <span class="size">{{file.size | filesize}}</span>
       </a>
     </div>
@@ -64,9 +66,11 @@
 
 <script>
 import filesize from 'filesize'
+import UploadModal from '@/components/UploadModal.vue'
 
 export default {
   name: 'hello',
+  components: { UploadModal },
   data () {
     return {
       files: null,
@@ -104,6 +108,8 @@ export default {
     },
     showUpload () {
       console.log('Showing upload...')
+
+      this.$refs.upload.toggle()
     },
     hasPreview (mime) {
       switch (mime) {
