@@ -5,7 +5,7 @@
     <nav class="nav has-shadow">
       <div class="nav-left">
         <div class="nav-item">
-          <strong>SuperFreight</strong>
+          <img src="../assets/logo.png" alt="SuperFreight logo">
         </div>
       </div>
 
