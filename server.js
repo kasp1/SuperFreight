@@ -11,7 +11,7 @@ const cors = require('cors')
 
 let cli = {
   run: {
-    usage: "superfreight [port]\n- Starts SuperFreight on port 6000 or the port specified.",
+    usage: "superfreight [port]\n- Starts SuperFreight on port 6100 or the port specified.",
     handler (port) {
       if (!port) {
         port = 6100

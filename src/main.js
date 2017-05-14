@@ -22,8 +22,8 @@ global.axios.defaults.baseURL = global.url
 
 // for dev purposes
 if (global.url === 'http://localhost:8080') {
-  global.url = 'http://localhost:6100/'
-  global.axios.defaults.baseURL = 'http://localhost:6100/'
+  global.url = 'http://localhost:6100'
+  global.axios.defaults.baseURL = 'http://localhost:6100'
 }
 
 /* eslint-disable no-new */
