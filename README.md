@@ -2,14 +2,6 @@
 
 > File transfer over HTTP. Transfer files between computers. Mac, Windows, Linux, Android, etc. Local file transfer, Wi-Fi, LAN, free, open source.
 
-![Screenshot 1](screen1.png)
-
-![Screenshot 2](screen2.png)
-
-(the workouts are not mine btw)
-
-![Screenshot 3](screen3.png)
-
 ## Installation and usage
 
 ### If you are familiar with CLI
@@ -31,3 +23,13 @@
 ## No luck?
 
 Chat me on [Gitter](https://gitter.im/kasp1).
+
+## Screenshots
+
+![Screenshot 1](screen1.png)
+
+![Screenshot 2](screen2.png)
+
+(the workouts are not mine btw)
+
+![Screenshot 3](screen3.png)
