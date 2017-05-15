@@ -13,7 +13,7 @@
         <div class="nav-item">
           <div class="field is-grouped">
             <p class="control">
-              <button class="button is-secondary" @click="toggleIconsList" title="Toggle view">
+              <button class="button" @click="toggleIconsList" title="Toggle view">
                 <span class="icon">
                   <i v-if="list === 'list'" class="fa fa-th-large"></i>
                   <i v-if="list === 'icons'" class="fa fa-th-list"></i>
@@ -21,7 +21,7 @@
               </button>
             </p>
             <p class="control">
-              <button class="button is-secondary" @click="reload" title="Refresh files">
+              <button :class="reloadButtonClasses" @click="reload" title="Refresh files">
                 <span class="icon">
                   <i class="fa fa-refresh"></i>
                 </span>
@@ -74,10 +74,17 @@ export default {
   data () {
     return {
       files: null,
-      list: 'icons'
+      list: 'icons',
+      isReloading: false
     }
   },
   computed: {
+    reloadButtonClasses () {
+      if (this.isReloading) {
+        return 'button is-loading'
+      }
+      return 'button'
+    }
   },
   methods: {
     fileLink (name) {
@@ -86,15 +93,15 @@ export default {
     reload () {
       console.log('Reloading...')
 
-      this.$store.commit('changeLoading', true)
+      this.isReloading = true
 
       window.axios.get('/files').then((response) => {
         console.log('HTTP OK:', response)
-        this.$store.commit('changeLoading', false)
         this.files = response.data
+        this.isReloading = false
       }).catch((error) => {
         console.warn('HTTP ERR:', error)
-        this.$store.commit('changeLoading', false)
+        this.isReloading = false
       })
     },
     toggleIconsList () {
