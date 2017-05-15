@@ -1,6 +1,14 @@
 # SuperFreight
 
-> File transfer over HTTP. Transfer files between computers. Mac, Windows, Linux, Android, etc. Local file transfer, Wi-Fi, LAN, free, open source.
+File transfer over HTTP. Transfer files between computers. Mac, Windows, Linux, Android, iPhone etc. Local file transfer, Wi-Fi, LAN, free, open source.
+
+### Features
+- Runs in web browser, opens on any modern device.
+- Upload and download.
+- Simple use. Run in a directory you want to share files from/to.
+- Download and upload multiple files simultaneously.
+- Large files no problem.
+- No carrier data usage, runs over your local network.
 
 ## Installation and usage
 
@@ -26,10 +34,10 @@ Chat me on [Gitter](https://gitter.im/kasp1).
 
 ## Screenshots
 
-![Screenshot 1](screen1.png)
+![Screenshot 1](https://github.com/kasp1/SuperFreight/raw/master/screen1.png)
 
-![Screenshot 2](screen2.png)
+![Screenshot 2](https://github.com/kasp1/SuperFreight/raw/master/screen2.png)
 
 (the workouts are not mine btw)
 
-![Screenshot 3](screen3.png)
+![Screenshot 3](https://github.com/kasp1/SuperFreight/raw/master/screen3.png)
